@@ -322,6 +322,7 @@ public class MyFTPClient {
 			if (inputStream != null) {
 				try {
 					inputStream.close();
+					sc.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
