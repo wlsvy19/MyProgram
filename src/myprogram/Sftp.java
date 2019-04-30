@@ -214,13 +214,14 @@ public class Sftp {
 					else
 						str += c.lpwd();
 					out.println(str);
-					System.out.println("내가한pwd: "+c.pwd());
+					System.out.println("내가한pwd: " + c.pwd());
 					continue;
 				}
 				if (cmd.equals("ls") || cmd.equals("dir")) {
 					String path = ".";
 					if (cmds.size() == 2)
 						path = (String) cmds.elementAt(1);
+					System.out.println("path: " + path);
 					try {
 						java.util.Vector vv = c.ls(path);
 						if (vv != null) {
@@ -265,12 +266,16 @@ public class Sftp {
 				if (cmd.equals("get") || cmd.equals("get-resume") || cmd.equals("get-append") || cmd.equals("put")
 						|| cmd.equals("put-resume") || cmd.equals("put-append")) {
 					if (cmds.size() != 2 && cmds.size() != 3)
+
 						continue;
+					System.out.println("cmds: " + cmds);
 					String p1 = (String) cmds.elementAt(1);
+					System.out.println("p1: " + p1);
 					// String p2=p1;
 					String p2 = ".";
 					if (cmds.size() == 3)
 						p2 = (String) cmds.elementAt(2);
+					System.out.println("p2: " + p2);
 					try {
 						SftpProgressMonitor monitor = new MyProgressMonitor();
 						if (cmd.startsWith("get")) {
