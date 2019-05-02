@@ -214,7 +214,6 @@ public class Sftp {
 					else
 						str += c.lpwd();
 					out.println(str);
-					System.out.println("내가한pwd: " + c.pwd());
 					continue;
 				}
 				if (cmd.equals("ls") || cmd.equals("dir")) {

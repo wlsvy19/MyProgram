@@ -1,0 +1,13 @@
+정적분석과 동적분석
+
+Git정리
+
+Jenkins에 Git연동후, Git 변경시 자동 빌드
+
+Jenkins - Schedule 자동 빌드 (cron표현식)
+
+Jenkins - tomcat에 war 파일 자동 배포------------여기까지...대충 ㅇㅋ;
+
+Jenkins - Findbugs, PMD 플러그인 적용
+
+SFTP Client 프로그램 자바로 만들기

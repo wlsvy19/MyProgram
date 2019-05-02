@@ -3,6 +3,7 @@ package myprogram;
 import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 import java.util.Scanner;
+import java.util.Vector;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
@@ -41,7 +42,6 @@ public class MySFTPClient {
 		String host = scanner.nextLine();
 		System.out.print("비밀번호 입력: ");
 		String password = scanner.nextLine();
-		// int port = scanner.nextInt();
 
 		try {
 			// 세션 객체 생성
@@ -59,12 +59,11 @@ public class MySFTPClient {
 			System.out.println("Connected to user@" + host);
 		} catch (JSchException e) {
 			System.out.println("접속에 실패했습니다.");
-			//실패시 시스템 종료
+			// 실패시 시스템 종료
 			System.exit(0);
 		}
 
 		ChannelSftp channelSftp = (ChannelSftp) channel;
-
 		while (true) {
 			System.out.print("sftp> ");
 			String str = "";
@@ -76,7 +75,7 @@ public class MySFTPClient {
 				try {
 					channelSftp.cd(p1);
 				} catch (SftpException e) {
-					System.out.println("절대경로 입력");
+					System.out.println("Couldn't stat remote file: No such file or directory");
 				}
 			}
 			if (command.equals("pwd")) {
@@ -88,7 +87,7 @@ public class MySFTPClient {
 			}
 			if (command.equals("quit")) {
 				channelSftp.quit();
-				//반복문 나감
+				// 반복문 나가서 종료
 				break;
 			}
 			if (command.equals("get")) {
@@ -113,17 +112,18 @@ public class MySFTPClient {
 			if (command.equals("ls") || command.equals("dir")) {
 				String path = ".";
 				try {
-					java.util.Vector vector = channelSftp.ls(path);
+					// 가변길이의 배열
+					Vector vector = channelSftp.ls(path);
 					if (vector != null) {
 						for (int i = 0; i < vector.size(); i++) {
 							Object obj = vector.elementAt(i);
-							if (obj instanceof com.jcraft.jsch.ChannelSftp.LsEntry) {
-								System.out.println(((com.jcraft.jsch.ChannelSftp.LsEntry) obj).getLongname());
+							if (obj instanceof ChannelSftp.LsEntry) {
+								System.out.println(((ChannelSftp.LsEntry) obj).getLongname());
 							}
 						}
 					}
 				} catch (SftpException e) {
-					e.printStackTrace();
+					System.out.println(e.toString());
 				}
 			}
 			if (command.equals("rm")) {
@@ -131,7 +131,7 @@ public class MySFTPClient {
 					String p1 = str.split("\\s")[1];
 					channelSftp.rm(p1);
 				} catch (SftpException e) {
-					System.out.println("지우려는 파일이 존재하지 않습니다.");
+					System.out.println("Couldn't delete file: No such file or directory");
 				}
 			}
 			if (command.equals("mkdir")) {
@@ -141,22 +141,21 @@ public class MySFTPClient {
 				} catch (SftpException e) {
 					e.printStackTrace();
 				}
-
 			}
 			if (command.equals("rmdir")) {
 				String p1 = str.split("\\s")[1];
 				try {
 					channelSftp.rmdir(p1);
 				} catch (SftpException e) {
-					System.out.println("지우려는 디렉토리가 존재하지 않습니다.");
+					System.out.println("Couldn't remove diretory: No such file or directory");
 				}
 			}
 		} // end while
-		//연결해제
+			// 연결해제
 		channelSftp.disconnect();
-		//스캐너자원반납
+		// 스캐너자원반납
 		scanner.close();
-		//시스템종료
+		// 시스템종료
 		System.exit(0);
 	}// end main()
 }// end class
