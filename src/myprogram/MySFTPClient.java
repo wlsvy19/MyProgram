@@ -78,14 +78,14 @@ public class MySFTPClient {
 					System.out.println("Couldn't stat remote file: No such file or directory");
 				}
 			}//end cd
-			if (command.equals("pwd")) {
+			else if  (command.equals("pwd")) {
 				try {
 					System.out.println("Remote working directory: " + channelSftp.pwd());
 				} catch (SftpException e) {
 					e.printStackTrace();
 				}
 			}//end pwd
-			if (command.equals("quit")) {
+			else if (command.equals("quit")) {
 				channelSftp.quit();
 				// 반복문 나가서 종료
 				break;
