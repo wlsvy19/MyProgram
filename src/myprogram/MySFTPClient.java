@@ -68,47 +68,47 @@ public class MySFTPClient {
 			System.out.print("sftp> ");
 			String str = "";
 			str = scanner.nextLine();
-			String command = str.split("\\s")[0];
+			String command = str.split(" ")[0];
 
 			if (command.equals("cd")) {
-				String p1 = str.split("\\s")[1];
+				String p1 = str.split(" ")[1];
 				try {
 					channelSftp.cd(p1);
 				} catch (SftpException e) {
 					System.out.println("Couldn't stat remote file: No such file or directory");
 				}
-			}
+			}//end cd
 			if (command.equals("pwd")) {
 				try {
 					System.out.println("Remote working directory: " + channelSftp.pwd());
 				} catch (SftpException e) {
 					e.printStackTrace();
 				}
-			}
+			}//end pwd
 			if (command.equals("quit")) {
 				channelSftp.quit();
 				// 반복문 나가서 종료
 				break;
-			}
+			}//end quit
 			if (command.equals("get")) {
 				// centos.txt
-				String p1 = str.split("\\s")[1];
+				String p1 = str.split(" ")[1];
 				// C:\Users\solulink
-				String p2 = str.split("\\s")[2];
+				String p2 = str.split(" ")[2];
 				try {
 					channelSftp.get(p1, p2);
 				} catch (SftpException e) {
 					System.out.println("Ex)get centos.txt C:\\User\\ssolulink");
 				}
-			}
+			}//end get
 			if (command.equals("put")) {
-				String p1 = str.split("\\s")[1];
+				String p1 = str.split(" ")[1];
 				try {
 					channelSftp.put(p1);
 				} catch (SftpException e) {
 					System.out.println("Ex)put window.txt");
 				}
-			}
+			}//end put
 			if (command.equals("ls") || command.equals("dir")) {
 				String path = ".";
 				try {
@@ -128,28 +128,28 @@ public class MySFTPClient {
 			}
 			if (command.equals("rm")) {
 				try {
-					String p1 = str.split("\\s")[1];
+					String p1 = str.split(" ")[1];
 					channelSftp.rm(p1);
 				} catch (SftpException e) {
 					System.out.println("Couldn't delete file: No such file or directory");
 				}
-			}
+			}//end rm
 			if (command.equals("mkdir")) {
-				String p1 = str.split("\\s")[1];
+				String p1 = str.split(" ")[1];
 				try {
 					channelSftp.mkdir(p1);
 				} catch (SftpException e) {
 					e.printStackTrace();
 				}
-			}
+			}//end mkdir
 			if (command.equals("rmdir")) {
-				String p1 = str.split("\\s")[1];
+				String p1 = str.split(" ")[1];
 				try {
 					channelSftp.rmdir(p1);
 				} catch (SftpException e) {
 					System.out.println("Couldn't remove diretory: No such file or directory");
 				}
-			}
+			}//end rmdir
 		} // end while
 			// 연결해제
 		channelSftp.disconnect();
