@@ -9,5 +9,8 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_201/lib/commons-net-3.6/commons-net-examples-3.6.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_201/lib/jsch-0.1.55.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_201/lib/bcprov-jdk15on-161.jar"/>
+	<classpathentry kind="lib" path="C:/Users/solulink/Downloads/groovy-2.5.6/lib"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre6/lib/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre6/lib/mariadb-java-client-2.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

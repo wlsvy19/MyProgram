@@ -105,7 +105,31 @@
 		</java>
 	</target>
 	
-
+	<!-- pmd 모듈 설치 경로 path 설정 및 classpath 설정 -->
+	    <property name="pmd.home" value="${pmd.home}">
+	    <echo message="${pmd.home}">
+	    <path id="pmd.classpath">
+	           <pathelement location="${pmd.home}">
+	           <fileset dir="${pmd.home}/lib" includes="*.jar">
+	    </fileset></pathelement></path>
+	 
+	<!-- pmd Ant 실행 파일 설정 -->
+	    <!-- pmd Ant Target 설정 Target 명=pmd로 설정. -->
+	     <target name="pmd_4.3" depends="clean, build">
+	        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath">
+	        <mkdir dir="./report/pmd">
+	        <!-- 소스코드를 검사할 PMD 규칙이 설정된 파일 지정 -->
+	        <pmd rulesetfiles="rulesets/favorites.xml">
+	         
+	            <!--  분석결과 파일 저장 위치 지정 -->
+	            <ruleset>basic</ruleset>
+	            <formatter type="xml" tofile="report/pmd/pmd_report.xml">
+	            <fileset dir="src">
+	                <include name="**/*.java">
+	            </include></fileset>
+	        </formatter></pmd>
+	     </mkdir></taskdef></target>
+	</echo></property>
 	
 	
 </project>
