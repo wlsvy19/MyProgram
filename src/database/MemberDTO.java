@@ -1,5 +1,5 @@
 package database;
-//git test test
+
 public class MemberDTO {
 	private String userId;
 	private String userName;
