@@ -1,4 +1,6 @@
 package program;
+
+//구현
 public class AdapterProtocolByObject implements Connectable {
 	Protocol protocol = new Protocol();
 	@Override

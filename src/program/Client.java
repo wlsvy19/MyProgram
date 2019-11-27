@@ -15,7 +15,10 @@ Protocol를 수정하지 않은 상태에서 interface와 Adapter만 수정하�
 public class Client {
 	public static void main(String[] args) {
 
+		//클래스 어댑터 패턴 사용
 		//Connectable connect = new AdapterProtocol();
+
+		//객체 어댑터 패턴 사용
 		Connectable connect = new AdapterProtocolByObject();
 		System.out.print("프로토콜 입력 : ");
 		Scanner sc = new Scanner(System.in);
@@ -25,6 +28,9 @@ public class Client {
 			connect.myFTPClient();
 		} else if (protocol.equals("sftp") || protocol.equals("SFTP")) {
 			connect.mySFTPClient();
+		}else {
+			System.out.println("유효하지 않습니다. 종료합니다.");
+			System.exit(0);
 		}
 		sc.close();
 	}// end main()

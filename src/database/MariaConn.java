@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MariaConn {
 	String driver = "org.mariadb.jdbc.Driver";
 	Connection conn;
-
+//20191127
 	public void DBconn() {
 		//드라이버 :// ip : 포트번호 / 데이터베이스 이름
 		String url = "jdbc:mariadb://192.168.0.126:3306/mysql";
