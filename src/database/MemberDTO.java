@@ -1,5 +1,5 @@
 package database;
-
+//
 public class MemberDTO {
 	private String userId;
 	private String userName;
