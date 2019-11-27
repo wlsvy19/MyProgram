@@ -3,7 +3,7 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+//20191127 test
 public class MariaConn {
 	String driver = "org.mariadb.jdbc.Driver";
 	Connection conn;
