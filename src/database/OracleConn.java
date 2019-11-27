@@ -1,7 +1,7 @@
 package database;
 
 import java.util.List;
-
+//git test test
 public class OracleConn {
 	public static void main(String[] args) {
 		MemberDAO dao = MemberDAO.getInstance();
